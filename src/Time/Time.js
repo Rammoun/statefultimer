@@ -28,8 +28,13 @@ class Timer extends React.Component {
   
  }
       starttimer=()=>{
-        if(this.state.isOn===false) this.setState({isOn:true})
-        else this.setState({isOn:false})
+        if(this.state.isOn===false){ 
+          this.setState({isOn:true});
+          document.getElementById('strt').textContent="Stop";
+        }
+        else {
+          this.setState({isOn:false});
+          document.getElementById('strt').textContent="Start";}
             }
         
       reset=()=>{
@@ -56,8 +61,8 @@ class Timer extends React.Component {
       <div >
       <h1>{this.convert(this.state.timer)}</h1>
       <div className='btns'>
-        <button  className='strt' onClick={()=>this.starttimer()}>Start</button>
-        <button onClick={()=>this.reset()} className='rst'>Reset</button>
+        <button  className='strt' id='strt' onClick={this.starttimer}>Start</button>
+        <button onClick={this.reset} className='rst'>Reset</button>
       </div>
       </div>
     );
